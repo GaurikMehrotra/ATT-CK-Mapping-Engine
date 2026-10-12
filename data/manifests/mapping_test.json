@@ -1,0 +1,777 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "synthetic-development-v1",
+  "synthetic": true,
+  "annotation_procedure": "Hand-authored synthetic development scenarios. Labels and event references were assigned from defining ATT&CK behavior and documented rule conditions before evaluation. Single-author review, no independent annotator; not a held-out or real-world benchmark.",
+  "cases": [
+    {
+      "case_id": "powershell-command",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "PowerShell command execution",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "powershell.exe",
+            "command_line": "powershell.exe -Command Get-Date",
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1059.001"
+      ],
+      "evidence_labels": {
+        "T1059.001": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Recognized interpreter with explicit command arguments."
+    },
+    {
+      "case_id": "cmd-command",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "cmd.exe command execution",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "cmd.exe",
+            "command_line": "cmd.exe /c echo hello",
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1059.003"
+      ],
+      "evidence_labels": {
+        "T1059.003": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Explicit Windows command interpreter command."
+    },
+    {
+      "case_id": "unix-script",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "bash script invocation",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "/bin/bash",
+            "command_line": "bash /tmp/demo.sh",
+            "event_metadata": {
+              "platform": "Linux"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1059.004"
+      ],
+      "evidence_labels": {
+        "T1059.004": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Script argument identifies Unix shell execution."
+    },
+    {
+      "case_id": "generic-interpreter",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "Reported command interpreter execution",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "vendor-shell",
+            "command_line": "vendor-shell run example",
+            "event_metadata": {
+              "behavior": "command_interpreter_execution",
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1059"
+      ],
+      "evidence_labels": {
+        "T1059": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Broader behavior only; interpreter family is not known."
+    },
+    {
+      "case_id": "powershell-no-command",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "PowerShell launched without recorded command",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "powershell.exe",
+            "command_line": null,
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Interpreter launch lacks command context."
+    },
+    {
+      "case_id": "static-import",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "static_indicator",
+            "description": "Static string powershell.exe and HTTP imports",
+            "source_type": "static_analysis",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "static_indicator",
+            "process_name": null,
+            "command_line": null,
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Capability indicators do not establish runtime execution."
+    },
+    {
+      "case_id": "failed-shell",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "PowerShell process blocked",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "powershell.exe",
+            "command_line": "powershell.exe -Command Get-Date",
+            "event_metadata": {
+              "platform": "Windows",
+              "outcome": "blocked"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": false,
+      "annotation_notes": "Blocked attempt cannot support successful execution."
+    },
+    {
+      "case_id": "platform-conflict",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "PowerShell event inconsistent with declared platform",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "powershell.exe",
+            "command_line": "powershell.exe -Command Get-Date",
+            "event_metadata": {
+              "platform": "Network"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Declared platform is outside loaded catalog technique scope."
+    },
+    {
+      "case_id": "autorun-value",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "registry_modification",
+            "description": "Startup Run registry value written",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "action": "set_value",
+              "registry_value_data": "example.exe",
+              "platform": "Windows"
+            },
+            "registry_path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Demo"
+          }
+        ]
+      },
+      "expected": [
+        "T1547.001"
+      ],
+      "evidence_labels": {
+        "T1547.001": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Recognized startup key and value write with command data."
+    },
+    {
+      "case_id": "autorun-no-data",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "registry_modification",
+            "description": "Startup Run registry value written",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "action": "set_value",
+              "platform": "Windows"
+            },
+            "registry_path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Demo"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "No startup command data; preserve ambiguity."
+    },
+    {
+      "case_id": "unrelated-registry",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "registry_modification",
+            "description": "Registry RunFake modified",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "action": "set_value",
+              "registry_value_data": "example.exe",
+              "platform": "Windows"
+            },
+            "registry_path": "HKCU\\Software\\RunFake"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": false,
+      "annotation_notes": "Keyword Run in an unrelated location is insufficient."
+    },
+    {
+      "case_id": "task-created",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "scheduled_task",
+            "description": "Scheduled task created",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "action": "create",
+              "task_action": "example.exe",
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1053.005"
+      ],
+      "evidence_labels": {
+        "T1053.005": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Observed task creation with action."
+    },
+    {
+      "case_id": "task-invoked-only",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "process_creation",
+            "description": "Task creation command launched",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "schtasks.exe",
+            "command_line": "schtasks.exe /create /tn demo /tr example.exe",
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Command invocation alone does not establish creation."
+    },
+    {
+      "case_id": "control-disabled",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "security_control_change",
+            "description": "Defender disable operation succeeded",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "control": "defender",
+              "action": "disable",
+              "outcome": "success",
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1562.001"
+      ],
+      "evidence_labels": {
+        "T1562.001": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Explicit successful security-control disabling."
+    },
+    {
+      "case_id": "control-change-unknown",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "security_control_change",
+            "description": "Defender disable outcome unknown",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "control": "defender",
+              "action": "disable",
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Successful state change is unverified."
+    },
+    {
+      "case_id": "isolated-file",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "file_write",
+            "description": "File created in downloads",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": false,
+      "annotation_notes": "File creation is not user execution."
+    },
+    {
+      "case_id": "isolated-http",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "network_connection",
+            "description": "Outbound HTTP connection",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "application_protocol": "http",
+              "platform": "Windows"
+            },
+            "network_destination": "example.invalid"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": false,
+      "annotation_notes": "HTTP traffic alone is not command and control."
+    },
+    {
+      "case_id": "isolated-dns",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "dns_request",
+            "description": "DNS request for example.invalid",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "platform": "Windows"
+            },
+            "network_destination": "example.invalid"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": false,
+      "annotation_notes": "DNS alone cannot establish command and control."
+    },
+    {
+      "case_id": "attributed-http-c2",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "network_connection",
+            "description": "Source reports HTTP command-and-control channel",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "source_reported",
+            "event_metadata": {
+              "application_protocol": "http",
+              "c2_channel": true,
+              "c2_evidence_reference": "/detections/2",
+              "platform": "Windows"
+            },
+            "network_destination": "example.invalid"
+          }
+        ]
+      },
+      "expected": [
+        "T1071.001"
+      ],
+      "evidence_labels": {
+        "T1071.001": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Source-reported channel attribution cited explicitly; not independently verified."
+    },
+    {
+      "case_id": "linked-user-execution",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "write",
+            "observation_type": "file_write",
+            "description": "File written",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T00:00:00Z"
+          },
+          {
+            "observation_id": "execute",
+            "observation_type": "process_creation",
+            "description": "User launched downloaded file",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/2",
+            "observation_status": "directly_observed",
+            "process_name": "demo.exe",
+            "command_line": "demo.exe",
+            "event_metadata": {
+              "file_write_observation_id": "write",
+              "user_initiated": true,
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T00:00:20Z"
+          }
+        ]
+      },
+      "expected": [
+        "T1204.002"
+      ],
+      "evidence_labels": {
+        "T1204.002": [
+          "write",
+          "execute"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Explicit same-file sequence with user action."
+    },
+    {
+      "case_id": "automatic-execution",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "write",
+            "observation_type": "file_write",
+            "description": "File written",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T00:00:00Z"
+          },
+          {
+            "observation_id": "execute",
+            "observation_type": "process_creation",
+            "description": "User launched downloaded file",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/2",
+            "observation_status": "directly_observed",
+            "process_name": "demo.exe",
+            "command_line": "demo.exe",
+            "event_metadata": {
+              "file_write_observation_id": "write",
+              "user_initiated": false,
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T00:00:20Z"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Same-file automatic execution does not establish user action."
+    },
+    {
+      "case_id": "stale-sequence",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "write",
+            "observation_type": "file_write",
+            "description": "File written",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T00:00:00Z"
+          },
+          {
+            "observation_id": "execute",
+            "observation_type": "process_creation",
+            "description": "User launched downloaded file",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/2",
+            "observation_status": "directly_observed",
+            "process_name": "demo.exe",
+            "command_line": "demo.exe",
+            "event_metadata": {
+              "file_write_observation_id": "write",
+              "user_initiated": true,
+              "platform": "Windows"
+            },
+            "file_path": "C:\\Downloads\\demo.exe",
+            "timestamp": "2026-01-01T02:00:00Z"
+          }
+        ]
+      },
+      "expected": [],
+      "evidence_labels": {},
+      "ambiguous": true,
+      "annotation_notes": "Sequence is outside configured correlation window."
+    },
+    {
+      "case_id": "multi-label",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "ps",
+            "observation_type": "process_creation",
+            "description": "PowerShell command execution",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "process_name": "powershell.exe",
+            "command_line": "powershell.exe -Command Get-Date",
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          },
+          {
+            "observation_id": "cmd",
+            "observation_type": "process_creation",
+            "description": "cmd.exe command execution",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/2",
+            "observation_status": "directly_observed",
+            "process_name": "cmd.exe",
+            "command_line": "cmd.exe /c echo hello",
+            "event_metadata": {
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1059.001",
+        "T1059.003"
+      ],
+      "evidence_labels": {
+        "T1059.001": [
+          "ps"
+        ],
+        "T1059.003": [
+          "cmd"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "Two distinct observed interpreter behaviors."
+    },
+    {
+      "case_id": "firewall-disabled",
+      "input": {
+        "schema_version": "1.0",
+        "observations": [
+          {
+            "observation_id": "o1",
+            "observation_type": "security_control_change",
+            "description": "System firewall disable succeeded",
+            "source_type": "endpoint_telemetry",
+            "source_id": "report1",
+            "source_reference": "/events/1",
+            "observation_status": "directly_observed",
+            "event_metadata": {
+              "control": "firewall",
+              "action": "disable",
+              "outcome": "success",
+              "platform": "Windows"
+            }
+          }
+        ]
+      },
+      "expected": [
+        "T1562.004"
+      ],
+      "evidence_labels": {
+        "T1562.004": [
+          "o1"
+        ]
+      },
+      "ambiguous": false,
+      "annotation_notes": "System firewall disabling uses its defining sub-technique, not general tool impairment."
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "$defs": {
+    "CandidateMapping": {
+      "additionalProperties": false,
+      "properties": {
+        "mapping_id": {
+          "title": "Mapping Id",
+          "type": "string"
+        },
+        "technique_id": {
+          "title": "Technique Id",
+          "type": "string"
+        },
+        "technique_name": {
+          "title": "Technique Name",
+          "type": "string"
+        },
+        "catalog_stix_id": {
+          "title": "Catalog Stix Id",
+          "type": "string"
+        },
+        "subtechnique_parent_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Subtechnique Parent Id"
+        },
+        "associated_tactics": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Associated Tactics",
+          "type": "array"
+        },
+        "mapping_status": {
+          "$ref": "#/$defs/MappingStatus"
+        },
+        "ranking_score": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Ranking Score",
+          "type": "number"
+        },
+        "score_type": {
+          "const": "heuristic_ranking",
+          "default": "heuristic_ranking",
+          "title": "Score Type",
+          "type": "string"
+        },
+        "score_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Score Version",
+          "type": "string"
+        },
+        "scoring_factors": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Scoring Factors",
+          "type": "object"
+        },
+        "ranking_explanation": {
+          "title": "Ranking Explanation",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "evidence_references": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence References",
+          "type": "array"
+        },
+        "supporting_rationale": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Supporting Rationale",
+          "type": "array"
+        },
+        "missing_context": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Context",
+          "type": "array"
+        },
+        "contradictions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Contradictions",
+          "type": "array"
+        },
+        "rule_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Rule Ids",
+          "type": "array"
+        },
+        "source_type": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Type",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "generation_methods": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Generation Methods",
+          "type": "array"
+        },
+        "llm_rationale": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Llm Rationale"
+        }
+      },
+      "required": [
+        "mapping_id",
+        "technique_id",
+        "technique_name",
+        "catalog_stix_id",
+        "subtechnique_parent_id",
+        "associated_tactics",
+        "mapping_status",
+        "ranking_score",
+        "scoring_factors",
+        "ranking_explanation",
+        "evidence_ids",
+        "evidence_references",
+        "supporting_rationale",
+        "missing_context",
+        "contradictions",
+        "rule_ids",
+        "source_type",
+        "limitations",
+        "generation_methods"
+      ],
+      "title": "CandidateMapping",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "additionalProperties": false,
+      "properties": {
+        "observation_id": {
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_reference": {
+          "title": "Source Reference",
+          "type": "string"
+        },
+        "source_type": {
+          "title": "Source Type",
+          "type": "string"
+        },
+        "observation_status": {
+          "title": "Observation Status",
+          "type": "string"
+        },
+        "underlying_event_key": {
+          "title": "Underlying Event Key",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observation_id",
+        "source_id",
+        "source_reference",
+        "source_type",
+        "observation_status",
+        "underlying_event_key"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "MappingStatus": {
+      "enum": [
+        "supported_candidate",
+        "weak_candidate",
+        "insufficient_evidence",
+        "rejected",
+        "analyst_confirmed"
+      ],
+      "title": "MappingStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "mapping_run_id": {
+      "title": "Mapping Run Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "catalog_version": {
+      "title": "Catalog Version",
+      "type": "string"
+    },
+    "rule_set_version": {
+      "title": "Rule Set Version",
+      "type": "string"
+    },
+    "input_observation_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Input Observation Ids",
+      "type": "array"
+    },
+    "candidate_mappings": {
+      "items": {
+        "$ref": "#/$defs/CandidateMapping"
+      },
+      "title": "Candidate Mappings",
+      "type": "array"
+    },
+    "rejected_candidates": {
+      "items": {
+        "$ref": "#/$defs/CandidateMapping"
+      },
+      "title": "Rejected Candidates",
+      "type": "array"
+    },
+    "unmapped_observations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unmapped Observations",
+      "type": "array"
+    },
+    "warnings": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
+    },
+    "processing_metadata": {
+      "additionalProperties": true,
+      "title": "Processing Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "mapping_run_id",
+    "catalog_version",
+    "rule_set_version",
+    "input_observation_ids",
+    "candidate_mappings",
+    "rejected_candidates",
+    "unmapped_observations",
+    "warnings",
+    "processing_metadata"
+  ],
+  "title": "MappingRun",
+  "type": "object"
+}

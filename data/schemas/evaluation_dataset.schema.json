@@ -1,0 +1,340 @@
+{
+  "$defs": {
+    "Case": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "minLength": 1,
+          "title": "Case Id",
+          "type": "string"
+        },
+        "input": {
+          "$ref": "#/$defs/ObservationBatch"
+        },
+        "expected": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected",
+          "type": "array"
+        },
+        "acceptable_sets": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Acceptable Sets",
+          "type": "array"
+        },
+        "evidence_labels": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Evidence Labels",
+          "type": "object"
+        },
+        "ambiguous": {
+          "default": false,
+          "title": "Ambiguous",
+          "type": "boolean"
+        },
+        "annotation_notes": {
+          "minLength": 1,
+          "title": "Annotation Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "case_id",
+        "input",
+        "expected",
+        "annotation_notes"
+      ],
+      "title": "Case",
+      "type": "object"
+    },
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "observation_id": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "observation_type": {
+          "$ref": "#/$defs/ObservationType"
+        },
+        "description": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "source_type": {
+          "$ref": "#/$defs/SourceType"
+        },
+        "source_id": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_reference": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Source Reference",
+          "type": "string"
+        },
+        "observation_status": {
+          "$ref": "#/$defs/ObservationStatus"
+        },
+        "timestamp": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Timestamp"
+        },
+        "process_name": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Process Name"
+        },
+        "process_id": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Process Id"
+        },
+        "parent_process_id": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent Process Id"
+        },
+        "command_line": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Command Line"
+        },
+        "file_path": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "File Path"
+        },
+        "registry_path": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Registry Path"
+        },
+        "network_destination": {
+          "anyOf": [
+            {
+              "maxLength": 8192,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Network Destination"
+        },
+        "event_metadata": {
+          "additionalProperties": true,
+          "title": "Event Metadata",
+          "type": "object"
+        },
+        "limitations": {
+          "items": {
+            "maxLength": 8192,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "observation_id",
+        "observation_type",
+        "description",
+        "source_type",
+        "source_id",
+        "source_reference",
+        "observation_status"
+      ],
+      "title": "Observation",
+      "type": "object"
+    },
+    "ObservationBatch": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "maxItems": 100000,
+          "title": "Observations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "observations"
+      ],
+      "title": "ObservationBatch",
+      "type": "object"
+    },
+    "ObservationStatus": {
+      "enum": [
+        "directly_observed",
+        "source_reported",
+        "static_indicator",
+        "inferred",
+        "analyst_hypothesis"
+      ],
+      "title": "ObservationStatus",
+      "type": "string"
+    },
+    "ObservationType": {
+      "enum": [
+        "process_creation",
+        "file_write",
+        "registry_modification",
+        "scheduled_task",
+        "network_connection",
+        "dns_request",
+        "security_control_change",
+        "static_indicator",
+        "other"
+      ],
+      "title": "ObservationType",
+      "type": "string"
+    },
+    "SourceType": {
+      "enum": [
+        "sandbox",
+        "static_analysis",
+        "endpoint_telemetry",
+        "incident_report",
+        "analyst"
+      ],
+      "title": "SourceType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "dataset_id": {
+      "minLength": 1,
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "synthetic": {
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "annotation_procedure": {
+      "minLength": 1,
+      "title": "Annotation Procedure",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/Case"
+      },
+      "maxItems": 10000,
+      "minItems": 1,
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "synthetic",
+    "annotation_procedure",
+    "cases"
+  ],
+  "title": "Dataset",
+  "type": "object"
+}

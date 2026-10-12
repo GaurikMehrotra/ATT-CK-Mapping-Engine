@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "attack-mapping-engine"
+version = "0.2.0"
+description = "Evidence-driven offline ATT&CK mapping, evidence validation and evaluation"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.10,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+
+[tool.setuptools.packages.find]
+include = ["src*", "rules"]
+
+[tool.setuptools.package-data]
+rules = ["default.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100

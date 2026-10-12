@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "supported_threshold": 0.7,
+  "weak_threshold": 0.4,
+  "strength_weight": 0.4,
+  "directness_weight": 0.25,
+  "completeness_weight": 0.15,
+  "reliability_weight": 0.1,
+  "independence_weight": 0.1,
+  "contradiction_penalty": 0.5,
+  "correlation_window_seconds": 300,
+  "metadata_limit": 3
+}

@@ -1,0 +1,144 @@
+{
+  "$defs": {
+    "ObservationType": {
+      "enum": [
+        "process_creation",
+        "file_write",
+        "registry_modification",
+        "scheduled_task",
+        "network_connection",
+        "dns_request",
+        "security_control_change",
+        "static_indicator",
+        "other"
+      ],
+      "title": "ObservationType",
+      "type": "string"
+    },
+    "Rule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "minLength": 1,
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "handler": {
+          "enum": [
+            "powershell",
+            "cmd",
+            "unix_shell",
+            "interpreter",
+            "autorun",
+            "scheduled_task",
+            "defender",
+            "firewall",
+            "file_execution",
+            "http_c2"
+          ],
+          "title": "Handler",
+          "type": "string"
+        },
+        "observation_types": {
+          "items": {
+            "$ref": "#/$defs/ObservationType"
+          },
+          "minItems": 1,
+          "title": "Observation Types",
+          "type": "array"
+        },
+        "required_fields": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Fields",
+          "type": "array"
+        },
+        "optional_context": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Optional Context",
+          "type": "array"
+        },
+        "technique_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Technique Ids",
+          "type": "array"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "conditions": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "weakening_conditions": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Weakening Conditions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "version",
+        "handler",
+        "observation_types",
+        "required_fields",
+        "optional_context",
+        "technique_ids",
+        "rationale",
+        "limitations",
+        "conditions",
+        "weakening_conditions"
+      ],
+      "title": "Rule",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/Rule"
+      },
+      "minItems": 1,
+      "title": "Rules",
+      "type": "array"
+    }
+  },
+  "required": [
+    "version",
+    "rules"
+  ],
+  "title": "RuleSet",
+  "type": "object"
+}

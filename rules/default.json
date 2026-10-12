@@ -1,0 +1,355 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "rule_id": "behavior.powershell",
+      "version": "1.0",
+      "handler": "powershell",
+      "observation_types": [
+        "process_creation"
+      ],
+      "required_fields": [
+        "process_name",
+        "command_line"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1059.001"
+      ],
+      "rationale": "Recognized PowerShell process with execution arguments",
+      "limitations": [
+        "Interpreter launch alone lacks executed command context"
+      ],
+      "conditions": [
+        "Recognized PowerShell process with execution arguments",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.cmd",
+      "version": "1.0",
+      "handler": "cmd",
+      "observation_types": [
+        "process_creation"
+      ],
+      "required_fields": [
+        "process_name",
+        "command_line"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1059.003"
+      ],
+      "rationale": "Windows command interpreter with /c or /k and command",
+      "limitations": [
+        "A legitimate shell is not necessarily malicious"
+      ],
+      "conditions": [
+        "Windows command interpreter with /c or /k and command",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.unix_shell",
+      "version": "1.0",
+      "handler": "unix_shell",
+      "observation_types": [
+        "process_creation"
+      ],
+      "required_fields": [
+        "process_name",
+        "command_line"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1059.004"
+      ],
+      "rationale": "Unix shell invocation with command or script",
+      "limitations": [
+        "Interactive shell alone has incomplete execution context"
+      ],
+      "conditions": [
+        "Unix shell invocation with command or script",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.interpreter",
+      "version": "1.0",
+      "handler": "interpreter",
+      "observation_types": [
+        "process_creation"
+      ],
+      "required_fields": [
+        "process_name",
+        "command_line"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1059"
+      ],
+      "rationale": "Source-reported generic command interpreter behavior",
+      "limitations": [
+        "Interpreter family is not specific enough for a sub-technique"
+      ],
+      "conditions": [
+        "Source-reported generic command interpreter behavior",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.autorun",
+      "version": "1.0",
+      "handler": "autorun",
+      "observation_types": [
+        "registry_modification"
+      ],
+      "required_fields": [
+        "registry_path"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1547.001"
+      ],
+      "rationale": "Startup registry value modification with startup command",
+      "limitations": [
+        "Autorun configuration may be legitimate"
+      ],
+      "conditions": [
+        "Startup registry value modification with startup command",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.scheduled_task",
+      "version": "1.0",
+      "handler": "scheduled_task",
+      "observation_types": [
+        "scheduled_task",
+        "process_creation"
+      ],
+      "required_fields": [],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1053.005"
+      ],
+      "rationale": "Creation of a Windows scheduled task with executable action",
+      "limitations": [
+        "Command invocation does not establish task creation success"
+      ],
+      "conditions": [
+        "Creation of a Windows scheduled task with executable action",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.defender",
+      "version": "1.0",
+      "handler": "defender",
+      "observation_types": [
+        "security_control_change"
+      ],
+      "required_fields": [],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1562.001"
+      ],
+      "rationale": "Observed successful disabling of a security control",
+      "limitations": [
+        "Administrative maintenance may explain the change"
+      ],
+      "conditions": [
+        "Observed successful disabling of a security control",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.file_execution",
+      "version": "1.0",
+      "handler": "file_execution",
+      "observation_types": [
+        "process_creation"
+      ],
+      "required_fields": [
+        "file_path",
+        "timestamp"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1204.002"
+      ],
+      "rationale": "Explicitly linked file write and user-initiated execution sequence",
+      "limitations": [
+        "File write plus automatic execution does not establish user execution"
+      ],
+      "conditions": [
+        "Explicitly linked file write and user-initiated execution sequence",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.http_c2",
+      "version": "1.0",
+      "handler": "http_c2",
+      "observation_types": [
+        "network_connection"
+      ],
+      "required_fields": [
+        "network_destination"
+      ],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1071.001"
+      ],
+      "rationale": "Source-supported HTTP command-and-control channel attribution",
+      "limitations": [
+        "HTTP traffic alone does not establish command and control"
+      ],
+      "conditions": [
+        "Source-supported HTTP command-and-control channel attribution",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    },
+    {
+      "rule_id": "behavior.firewall",
+      "version": "1.0",
+      "handler": "firewall",
+      "observation_types": [
+        "security_control_change"
+      ],
+      "required_fields": [],
+      "optional_context": [
+        "platform",
+        "source_reliability",
+        "outcome",
+        "underlying_event_id",
+        "timestamps"
+      ],
+      "technique_ids": [
+        "T1562.004"
+      ],
+      "rationale": "Observed successful disabling of a system firewall",
+      "limitations": [
+        "Administrative maintenance may explain the change"
+      ],
+      "conditions": [
+        "Observed successful disabling of a system firewall",
+        "Defining fields must be present for supported status"
+      ],
+      "weakening_conditions": [
+        "Static, inferred or hypothetical provenance",
+        "Failed or blocked outcome",
+        "Contradictory event or incompatible platform",
+        "Missing defining context"
+      ]
+    }
+  ]
+}

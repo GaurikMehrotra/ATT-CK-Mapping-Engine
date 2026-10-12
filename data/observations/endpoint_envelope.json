@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "report_id": "synthetic-endpoint",
+  "events": [
+    {
+      "observation_id": "ps",
+      "observation_type": "process_creation",
+      "description": "PowerShell command execution",
+      "observation_status": "directly_observed",
+      "process_name": "powershell.exe",
+      "command_line": "powershell.exe -Command Get-Date",
+      "event_metadata": {
+        "platform": "Windows"
+      }
+    }
+  ]
+}

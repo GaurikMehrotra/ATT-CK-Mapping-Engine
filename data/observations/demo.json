@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "observations": [
+    {
+      "observation_id": "ps",
+      "observation_type": "process_creation",
+      "description": "PowerShell command execution",
+      "source_type": "endpoint_telemetry",
+      "source_id": "report1",
+      "source_reference": "/events/1",
+      "observation_status": "directly_observed",
+      "process_name": "powershell.exe",
+      "command_line": "powershell.exe -Command Get-Date",
+      "event_metadata": {
+        "platform": "Windows"
+      }
+    },
+    {
+      "observation_id": "cmd",
+      "observation_type": "process_creation",
+      "description": "cmd.exe command execution",
+      "source_type": "endpoint_telemetry",
+      "source_id": "report1",
+      "source_reference": "/events/2",
+      "observation_status": "directly_observed",
+      "process_name": "cmd.exe",
+      "command_line": "cmd.exe /c echo hello",
+      "event_metadata": {
+        "platform": "Windows"
+      }
+    },
+    {
+      "observation_id": "o1",
+      "observation_type": "registry_modification",
+      "description": "Startup Run registry value written",
+      "source_type": "endpoint_telemetry",
+      "source_id": "report1",
+      "source_reference": "/events/1",
+      "observation_status": "directly_observed",
+      "process_name": "powershell.exe",
+      "command_line": "powershell.exe -Command Get-Date",
+      "event_metadata": {
+        "action": "set_value",
+        "registry_value_data": "example.exe",
+        "platform": "Windows"
+      },
+      "registry_path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Demo"
+    }
+  ]
+}

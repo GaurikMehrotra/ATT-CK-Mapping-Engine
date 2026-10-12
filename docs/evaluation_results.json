@@ -1,0 +1,1324 @@
+{
+  "dataset_id": "synthetic-development-v1",
+  "synthetic": true,
+  "catalog_version": "18.0",
+  "rule_set_version": "1.0",
+  "rule_set_sha256": "cf80e34ef95d998b5edfe713ad983aaaaa41c957de19ef8942ff27b3e03a0abc",
+  "score_configuration": {
+    "version": "1.0",
+    "supported_threshold": 0.7,
+    "weak_threshold": 0.4,
+    "strength_weight": 0.4,
+    "directness_weight": 0.25,
+    "completeness_weight": 0.15,
+    "reliability_weight": 0.1,
+    "independence_weight": 0.1,
+    "contradiction_penalty": 0.5,
+    "correlation_window_seconds": 300,
+    "metadata_limit": 3
+  },
+  "configurations": {
+    "keyword": {
+      "metrics": {
+        "case_count": 24,
+        "true_positives": 10,
+        "false_positives": 15,
+        "false_negatives": 2,
+        "candidate_precision": 0.4,
+        "candidate_recall": 0.8333333333333334,
+        "candidate_recall_at_k": 0.8333333333333334,
+        "retrieved_label_count": 25,
+        "reference_label_count": 12,
+        "predicted_label_count": 25,
+        "set_precision": 0.4,
+        "set_recall": 0.8333333333333334,
+        "micro_f1": 0.5405405405405406,
+        "macro_label_f1": 0.4966666666666667,
+        "exact_match_accuracy": 0.4166666666666667,
+        "precision_at_k": 0.13888888888888887,
+        "recall_at_k": 0.375,
+        "k": 3,
+        "unsupported_mapping_rate": 1.0,
+        "abstention_rate": 0.041666666666666664,
+        "evidence_reference_completeness": 0.0,
+        "runtime_seconds_per_observation": 3.480535740761427e-06,
+        "ambiguous_case_count": 8,
+        "ambiguous_exact_match_accuracy": 0.0,
+        "empty_denominator_policy": "zero; inspect counts, zero is not evidence of quality"
+      },
+      "cases": [
+        {
+          "case_id": "powershell-command",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [
+            "T1059.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 1.8305000139662297e-05
+        },
+        {
+          "case_id": "cmd-command",
+          "predicted": [
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.003"
+          ],
+          "expected": [
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 9.80200002231868e-06
+        },
+        {
+          "case_id": "unix-script",
+          "predicted": [
+            "T1059.004"
+          ],
+          "retrieved": [
+            "T1059.004"
+          ],
+          "expected": [
+            "T1059.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 5.579000116995303e-06
+        },
+        {
+          "case_id": "generic-interpreter",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [
+            "T1059"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 3.88500006920367e-06
+        },
+        {
+          "case_id": "powershell-no-command",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.632999894558452e-06
+        },
+        {
+          "case_id": "static-import",
+          "predicted": [
+            "T1059.001",
+            "T1071.001"
+          ],
+          "retrieved": [
+            "T1059.001",
+            "T1071.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 2,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 4.338000053394353e-06
+        },
+        {
+          "case_id": "failed-shell",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 3.011999979207758e-06
+        },
+        {
+          "case_id": "platform-conflict",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.589000132502406e-06
+        },
+        {
+          "case_id": "autorun-value",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [
+            "T1547.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.900000026784255e-06
+        },
+        {
+          "case_id": "autorun-no-data",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.6309999157092534e-06
+        },
+        {
+          "case_id": "unrelated-registry",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.4339999527001055e-06
+        },
+        {
+          "case_id": "task-created",
+          "predicted": [
+            "T1053.005"
+          ],
+          "retrieved": [
+            "T1053.005"
+          ],
+          "expected": [
+            "T1053.005"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.7779999527410837e-06
+        },
+        {
+          "case_id": "task-invoked-only",
+          "predicted": [
+            "T1053.005"
+          ],
+          "retrieved": [
+            "T1053.005"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.4890000531740952e-06
+        },
+        {
+          "case_id": "control-disabled",
+          "predicted": [
+            "T1562.001"
+          ],
+          "retrieved": [
+            "T1562.001"
+          ],
+          "expected": [
+            "T1562.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 3.0420001166930888e-06
+        },
+        {
+          "case_id": "control-change-unknown",
+          "predicted": [
+            "T1562.001"
+          ],
+          "retrieved": [
+            "T1562.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.3610000425833277e-06
+        },
+        {
+          "case_id": "isolated-file",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.9510001695598476e-06
+        },
+        {
+          "case_id": "isolated-http",
+          "predicted": [
+            "T1071.001"
+          ],
+          "retrieved": [
+            "T1071.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.6560001060715877e-06
+        },
+        {
+          "case_id": "isolated-dns",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.3480001800635364e-06
+        },
+        {
+          "case_id": "attributed-http-c2",
+          "predicted": [
+            "T1071.001"
+          ],
+          "retrieved": [
+            "T1071.001"
+          ],
+          "expected": [
+            "T1071.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.6729999262897763e-06
+        },
+        {
+          "case_id": "linked-user-execution",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [
+            "T1204.002"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 3.65999994755839e-06
+        },
+        {
+          "case_id": "automatic-execution",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 3.0009998681634897e-06
+        },
+        {
+          "case_id": "stale-sequence",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 2.2950000584387453e-06
+        },
+        {
+          "case_id": "multi-label",
+          "predicted": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "expected": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 2,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 6.261999942580587e-06
+        },
+        {
+          "case_id": "firewall-disabled",
+          "predicted": [
+            "T1562.001"
+          ],
+          "retrieved": [
+            "T1562.001"
+          ],
+          "expected": [
+            "T1562.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 1,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 2.8310000743658748e-06
+        }
+      ]
+    },
+    "deterministic": {
+      "metrics": {
+        "case_count": 24,
+        "true_positives": 12,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "candidate_precision": 0.6666666666666666,
+        "candidate_recall": 1.0,
+        "candidate_recall_at_k": 1.0,
+        "retrieved_label_count": 18,
+        "reference_label_count": 12,
+        "predicted_label_count": 12,
+        "set_precision": 1.0,
+        "set_recall": 1.0,
+        "micro_f1": 1.0,
+        "macro_label_f1": 1.0,
+        "exact_match_accuracy": 1.0,
+        "precision_at_k": 0.16666666666666666,
+        "recall_at_k": 0.4583333333333333,
+        "k": 3,
+        "unsupported_mapping_rate": 0.0,
+        "abstention_rate": 0.5416666666666666,
+        "evidence_reference_completeness": 1.0,
+        "runtime_seconds_per_observation": 0.0002562558214224607,
+        "ambiguous_case_count": 8,
+        "ambiguous_exact_match_accuracy": 1.0,
+        "empty_denominator_policy": "zero; inspect counts, zero is not evidence of quality"
+      },
+      "cases": [
+        {
+          "case_id": "powershell-command",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [
+            "T1059.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0006452340001033008
+        },
+        {
+          "case_id": "cmd-command",
+          "predicted": [
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.003"
+          ],
+          "expected": [
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0002478950000295299
+        },
+        {
+          "case_id": "unix-script",
+          "predicted": [
+            "T1059.004"
+          ],
+          "retrieved": [
+            "T1059.004"
+          ],
+          "expected": [
+            "T1059.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.00020112600009269954
+        },
+        {
+          "case_id": "generic-interpreter",
+          "predicted": [
+            "T1059"
+          ],
+          "retrieved": [
+            "T1059"
+          ],
+          "expected": [
+            "T1059"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.00018034300001090742
+        },
+        {
+          "case_id": "powershell-no-command",
+          "predicted": [],
+          "retrieved": [
+            "T1059.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0001946929999121494
+        },
+        {
+          "case_id": "static-import",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 9.994700008064683e-05
+        },
+        {
+          "case_id": "failed-shell",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0002742990000115242
+        },
+        {
+          "case_id": "platform-conflict",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.000161984999976994
+        },
+        {
+          "case_id": "autorun-value",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [
+            "T1547.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0009439130001283047
+        },
+        {
+          "case_id": "autorun-no-data",
+          "predicted": [],
+          "retrieved": [
+            "T1547.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0001888799999960611
+        },
+        {
+          "case_id": "unrelated-registry",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.00010787099995468452
+        },
+        {
+          "case_id": "task-created",
+          "predicted": [
+            "T1053.005"
+          ],
+          "retrieved": [
+            "T1053.005"
+          ],
+          "expected": [
+            "T1053.005"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0002718079999795009
+        },
+        {
+          "case_id": "task-invoked-only",
+          "predicted": [],
+          "retrieved": [
+            "T1053.005"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.00023365199990621477
+        },
+        {
+          "case_id": "control-disabled",
+          "predicted": [
+            "T1562.001"
+          ],
+          "retrieved": [
+            "T1562.001"
+          ],
+          "expected": [
+            "T1562.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.00018833899980563729
+        },
+        {
+          "case_id": "control-change-unknown",
+          "predicted": [],
+          "retrieved": [
+            "T1562.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0008297049998873263
+        },
+        {
+          "case_id": "isolated-file",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.00012408699990373862
+        },
+        {
+          "case_id": "isolated-http",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 9.772600014912314e-05
+        },
+        {
+          "case_id": "isolated-dns",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 8.589100002609484e-05
+        },
+        {
+          "case_id": "attributed-http-c2",
+          "predicted": [
+            "T1071.001"
+          ],
+          "retrieved": [
+            "T1071.001"
+          ],
+          "expected": [
+            "T1071.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.00017706299991004926
+        },
+        {
+          "case_id": "linked-user-execution",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [
+            "T1204.002"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 2,
+          "runtime_seconds": 0.00036547600006997527
+        },
+        {
+          "case_id": "automatic-execution",
+          "predicted": [],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 0.00037523199989664136
+        },
+        {
+          "case_id": "stale-sequence",
+          "predicted": [],
+          "retrieved": [
+            "T1204.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 0.0006403739998859237
+        },
+        {
+          "case_id": "multi-label",
+          "predicted": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "expected": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 2,
+          "observation_count": 2,
+          "runtime_seconds": 0.00036011800011692685
+        },
+        {
+          "case_id": "firewall-disabled",
+          "predicted": [
+            "T1562.004"
+          ],
+          "retrieved": [
+            "T1562.004"
+          ],
+          "expected": [
+            "T1562.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.00017950599999494443
+        }
+      ]
+    },
+    "hybrid": {
+      "metrics": {
+        "case_count": 24,
+        "true_positives": 12,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "candidate_precision": 0.1643835616438356,
+        "candidate_recall": 1.0,
+        "candidate_recall_at_k": 1.0,
+        "retrieved_label_count": 73,
+        "reference_label_count": 12,
+        "predicted_label_count": 12,
+        "set_precision": 1.0,
+        "set_recall": 1.0,
+        "micro_f1": 1.0,
+        "macro_label_f1": 1.0,
+        "exact_match_accuracy": 1.0,
+        "precision_at_k": 0.16666666666666666,
+        "recall_at_k": 0.4583333333333333,
+        "k": 3,
+        "unsupported_mapping_rate": 0.0,
+        "abstention_rate": 0.5416666666666666,
+        "evidence_reference_completeness": 1.0,
+        "runtime_seconds_per_observation": 0.0038523095357163584,
+        "ambiguous_case_count": 8,
+        "ambiguous_exact_match_accuracy": 1.0,
+        "empty_denominator_policy": "zero; inspect counts, zero is not evidence of quality"
+      },
+      "cases": [
+        {
+          "case_id": "powershell-command",
+          "predicted": [
+            "T1059.001"
+          ],
+          "retrieved": [
+            "T1059.001",
+            "T1216.002",
+            "T1546.013"
+          ],
+          "expected": [
+            "T1059.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.001954072999978962
+        },
+        {
+          "case_id": "cmd-command",
+          "predicted": [
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.003",
+            "T1202",
+            "T1574.008"
+          ],
+          "expected": [
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0020646110001507623
+        },
+        {
+          "case_id": "unix-script",
+          "predicted": [
+            "T1059.004"
+          ],
+          "retrieved": [
+            "T1059.004",
+            "T1074.001",
+            "T1546.004"
+          ],
+          "expected": [
+            "T1059.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0018108039998878667
+        },
+        {
+          "case_id": "generic-interpreter",
+          "predicted": [
+            "T1059"
+          ],
+          "retrieved": [
+            "T1059",
+            "T1005"
+          ],
+          "expected": [
+            "T1059"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.002064262999965649
+        },
+        {
+          "case_id": "powershell-no-command",
+          "predicted": [],
+          "retrieved": [
+            "T1546.008",
+            "T1546.013",
+            "T1059.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0021036739999544807
+        },
+        {
+          "case_id": "static-import",
+          "predicted": [],
+          "retrieved": [
+            "T1027.007",
+            "T1036.012"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0019329300000663352
+        },
+        {
+          "case_id": "failed-shell",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.04852858100002777
+        },
+        {
+          "case_id": "platform-conflict",
+          "predicted": [],
+          "retrieved": [],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.005873715000006996
+        },
+        {
+          "case_id": "autorun-value",
+          "predicted": [
+            "T1547.001"
+          ],
+          "retrieved": [
+            "T1547.001",
+            "T1053.005",
+            "T1547.010"
+          ],
+          "expected": [
+            "T1547.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0026000179998391104
+        },
+        {
+          "case_id": "autorun-no-data",
+          "predicted": [],
+          "retrieved": [
+            "T1547.001",
+            "T1053.005",
+            "T1547.010"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.002225516999942556
+        },
+        {
+          "case_id": "unrelated-registry",
+          "predicted": [],
+          "retrieved": [
+            "T1012",
+            "T1112",
+            "T1552.002"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0014239110000744404
+        },
+        {
+          "case_id": "task-created",
+          "predicted": [
+            "T1053.005"
+          ],
+          "retrieved": [
+            "T1053.005",
+            "T1053.002"
+          ],
+          "expected": [
+            "T1053.005"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.002165903000104663
+        },
+        {
+          "case_id": "task-invoked-only",
+          "predicted": [],
+          "retrieved": [
+            "T1053.005",
+            "T1036.004",
+            "T1053"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0015726100000392762
+        },
+        {
+          "case_id": "control-disabled",
+          "predicted": [
+            "T1562.001"
+          ],
+          "retrieved": [
+            "T1562.001",
+            "T1090.003",
+            "T1562.011"
+          ],
+          "expected": [
+            "T1562.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0015676689999963855
+        },
+        {
+          "case_id": "control-change-unknown",
+          "predicted": [],
+          "retrieved": [
+            "T1562.001",
+            "T1090.003",
+            "T1562.011"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.005747344999917914
+        },
+        {
+          "case_id": "isolated-file",
+          "predicted": [],
+          "retrieved": [
+            "T1027.006",
+            "T1027.017",
+            "T1176.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0023487959999783925
+        },
+        {
+          "case_id": "isolated-http",
+          "predicted": [],
+          "retrieved": [
+            "T1011",
+            "T1090",
+            "T1090.001"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0021723380000366888
+        },
+        {
+          "case_id": "isolated-dns",
+          "predicted": [],
+          "retrieved": [
+            "T1036.001",
+            "T1071.004"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 1,
+          "runtime_seconds": 0.0033920420000868035
+        },
+        {
+          "case_id": "attributed-http-c2",
+          "predicted": [
+            "T1071.001"
+          ],
+          "retrieved": [
+            "T1071.001",
+            "T1011.001",
+            "T1041",
+            "T1048"
+          ],
+          "expected": [
+            "T1071.001"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0038925220001146954
+        },
+        {
+          "case_id": "linked-user-execution",
+          "predicted": [
+            "T1204.002"
+          ],
+          "retrieved": [
+            "T1204.002",
+            "T1059.006",
+            "T1123",
+            "T1216",
+            "T1546.008",
+            "T1553.005"
+          ],
+          "expected": [
+            "T1204.002"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 2,
+          "runtime_seconds": 0.003473422000070059
+        },
+        {
+          "case_id": "automatic-execution",
+          "predicted": [],
+          "retrieved": [
+            "T1204.002",
+            "T1059.006",
+            "T1123",
+            "T1216",
+            "T1546.008",
+            "T1553.005"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 0.002365551999901072
+        },
+        {
+          "case_id": "stale-sequence",
+          "predicted": [],
+          "retrieved": [
+            "T1204.002",
+            "T1059.006",
+            "T1123",
+            "T1216",
+            "T1546.008",
+            "T1553.005"
+          ],
+          "expected": [],
+          "acceptable_sets": [],
+          "ambiguous": true,
+          "unsupported_count": 0,
+          "complete_reference_count": 0,
+          "observation_count": 2,
+          "runtime_seconds": 0.0023765020000610093
+        },
+        {
+          "case_id": "multi-label",
+          "predicted": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "retrieved": [
+            "T1059.001",
+            "T1059.003",
+            "T1202",
+            "T1216.002",
+            "T1546.013",
+            "T1574.008"
+          ],
+          "expected": [
+            "T1059.001",
+            "T1059.003"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 2,
+          "observation_count": 2,
+          "runtime_seconds": 0.0028055880000010802
+        },
+        {
+          "case_id": "firewall-disabled",
+          "predicted": [
+            "T1562.004"
+          ],
+          "retrieved": [
+            "T1562.004"
+          ],
+          "expected": [
+            "T1562.004"
+          ],
+          "acceptable_sets": [],
+          "ambiguous": false,
+          "unsupported_count": 0,
+          "complete_reference_count": 1,
+          "observation_count": 1,
+          "runtime_seconds": 0.0014022809998550656
+        }
+      ]
+    }
+  },
+  "llm_enabled": false,
+  "limitations": [
+    "Synthetic scenarios are not real-world benchmark evidence"
+  ]
+}
